@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p This is Anilkumar Palavelli, I can make the enviornment happy around me.
+  button(type="button", class="btn btn-warning" onclick="doBump()") Press Me for the contents
+  div(id="bump") Bump the count 
+  script.
+    var count=0;
+    var bump=1;
+    function doBump() {
+      count=count+bump;
+      bump=bump+1;
+    
+    
+      document.getElementById("bump").innerHTML="Count " +count+" Bump " +bump ;
+    }
+  a(href="fish") fish page
+
