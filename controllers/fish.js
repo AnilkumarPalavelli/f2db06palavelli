@@ -1,8 +1,19 @@
 var fish = require('../models/fish');
 // List of all fishes
-exports.fish_list = function(req, res) {
-res.send('NOT IMPLEMENTED: fish list');
-};
+exports.fish_list = async function(req, res) {
+    try{
+    thefishes = await fish.find();
+    res.send(thefishes);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+// List of all fishes
+//exports.fish_list = function(req, res) {
+//res.send('NOT IMPLEMENTED: fish list');
+//};
 // for a specific fish.
 exports.fish_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: fish detail: ' + req.params.id);
