@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var fish=[{fish_type:"Salmon",fish_weight:"5lbs",fish_cost:20},{fish_type:"Tuna",fish_weight:"3lbs",fish_cost:30},{fish_type:"Cod",fish_weight:"8lbs",fish_cost:50}]
+  - let fish=results
   div(class="container-fluid")
   div(class="row")
    each f,index  in fish

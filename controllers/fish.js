@@ -30,3 +30,16 @@ res.send('NOT IMPLEMENTED: fish delete DELETE ' + req.params.id);
 exports.fish_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: fish update PUT' + req.params.id);
 };
+
+// VIEWS
+// Handle a show all view
+exports.fish_view_all_Page = async function(req, res) {
+    try{
+    thefishes = await fish.find();
+    res.render('fish', { title: 'fish Search Results', results: thefishes });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
