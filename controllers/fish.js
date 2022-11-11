@@ -16,7 +16,7 @@ exports.fish_list = async function (req, res) {
 //};
 // for a specific fish.
 //exports.fish_detail = function (req, res) {
-   // res.send('NOT IMPLEMENTED: fish detail: ' + req.params.id);
+// res.send('NOT IMPLEMENTED: fish detail: ' + req.params.id);
 //};
 // Handle fish create on POST.
 exports.fish_create_post = function (req, res) {
@@ -27,9 +27,9 @@ exports.fish_delete = function (req, res) {
     res.send('NOT IMPLEMENTED: fish delete DELETE ' + req.params.id);
 };
 // Handle fish update form on PUT.
-exports.fish_update_put = function (req, res) {
-    res.send('NOT IMPLEMENTED: fish update PUT' + req.params.id);
-};
+//exports.fish_update_put = function (req, res) {
+   // res.send('NOT IMPLEMENTED: fish update PUT' + req.params.id);
+//};
 
 // VIEWS
 // Handle a show all view
@@ -72,5 +72,26 @@ exports.fish_detail = async function (req, res) {
     } catch (error) {
         res.status(500)
         res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+};
+
+//Handle fish update form on PUT.
+exports.fish_update_put = async function (req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await fish.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.fish_type)
+            toUpdate.fish_type = req.body.fish_type;
+        if (req.body.fish_weight) toUpdate.fish_weight = req.body.fish_weight;
+        if (req.body.fish_cost) toUpdate.fish_cost = req.body.fish_cost;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
     }
 };
