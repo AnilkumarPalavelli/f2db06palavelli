@@ -6,4 +6,6 @@ var router = express.Router();
 router.get('/', fish_controlers.fish_view_all_Page);
 /* GET detail fish page */
 router.get('/detail', fish_controlers.fish_view_one_Page);
+/* GET create fish page */
+router.get('/create', fish_controlers.fish_create_Page);
 module.exports = router;
