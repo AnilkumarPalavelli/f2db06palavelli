@@ -28,7 +28,7 @@ exports.fish_delete = function (req, res) {
 };
 // Handle fish update form on PUT.
 //exports.fish_update_put = function (req, res) {
-   // res.send('NOT IMPLEMENTED: fish update PUT' + req.params.id);
+// res.send('NOT IMPLEMENTED: fish update PUT' + req.params.id);
 //};
 
 // VIEWS
@@ -93,5 +93,32 @@ exports.fish_update_put = async function (req, res) {
         res.status(500)
         res.send(`{"error": ${err}: Update for id ${req.params.id}
     failed`);
+    }
+};
+
+// Handle fish delete on DELETE.
+exports.fish_delete = async function (req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await fish.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
+};
+
+// Handle a show one view with id specified by query
+exports.fish_view_one_Page = async function (req, res) {
+    console.log("single view for id " + req.query.id)
+    try {
+        result = await fish.findById(req.query.id)
+        res.render('fishdetail',
+            { title: 'fish Detail', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
     }
 };
