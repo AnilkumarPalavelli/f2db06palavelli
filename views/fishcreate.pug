@@ -3,13 +3,13 @@ block content
     h1= title
     form(id='fishForm', action="/resource/fishes", method="POST")
       div.form-group
-        label.fishAttr(for='fish_type') fish type
+        label.fishStyle(for='fish_type') fish type
         input#fish_type(type='text', name='fish_type')
       div.form-group
-        label.fishAttr(for='fish_weight') fish weight
+        label.fishStyle(for='fish_weight') fish weight
         input#size(type='text', name='fish_weight')
       div.form-group
-        label.fishAttr(for='cost') fish cost
+        label.fishStyle(for='cost') fish cost
         input#cost(type='number', name='fish_cost')
       input(type="submit")
     script.
