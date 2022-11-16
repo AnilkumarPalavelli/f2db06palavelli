@@ -4,27 +4,27 @@ block content
   if (toShow == null) 
     h2 No instance to update 
   else
-  - let fishid = toShow._id
-  - let fish_type = toShow.fish_type
-  - let fish_weight = toShow.fish_weight
-  - let fish_cost= toShow.fish_cost
-  - let actionid = "/resource/fishes/" + fishid
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{biryaniid} 
-  form(id='fishForm', action=actionid, method="PUT")
-   div.form-group
-    label.fishAttr(for='fish_type') Fish type
-    input#fish_type(type='text', name='fish_type')
-   div.form-group
-    label.fishAttr(for='fish_weight') Fish weight
-    input#fish_weight(type='text', name='fish_weight')
-   div.form-group
-    label.fishAttr(for='fish_cost') Fish cost
-    input#fish_cost(type='number', name='fish_cost')
-   input(type="submit")
-  script.
-    document.forms['fishForm'].addEventListener('submit', (event) => {
+   - let fishid = toShow._id
+   - let fish_type = toShow.fish_type
+   - let fish_weight = toShow.fish_weight
+   - let fish_cost= toShow.fish_cost
+   - let actionid = "/resource/fishes/" + fishid
+   div.row(class='mb-2') 
+     div.mr-1 ID is 
+     div #{biryaniid} 
+   form(id='fishForm', action=actionid, method="PUT")
+    div.form-group
+     label.fishAttr(for='fish_type') Fish type
+     input#fish_type(type='text', name='fish_type')
+    div.form-group
+     label.fishAttr(for='fish_weight') Fish weight
+     input#fish_weight(type='text', name='fish_weight')
+    div.form-group
+     label.fishAttr(for='fish_cost') Fish cost
+     input#fish_cost(type='number', name='fish_cost')
+    input(type="submit")
+   script.
+     document.forms['fishForm'].addEventListener('submit', (event) => {
       event.preventDefault();
       // TODO do something here to show user that form is being submitted
       fetch(event.target.action, {
