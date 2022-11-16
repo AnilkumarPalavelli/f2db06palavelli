@@ -2,15 +2,14 @@ extends layout
  
 block content 
   h1= title 
-  if(toShow==null)
-    h2 No instance to Detail
-  else
  
-   
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
     - let fishid = toShow._id 
     - let fish_type = toShow.fish_type
     - let fish_weight = toShow.fish_weight
-    - let fish_cost = toShow.fish_cost 
+    - let fish_cost = toShow.fish_weight 
     - let actionid = "/resource/fishes/" + fishid 
     script let actionid = "#{actionid}" 
     div 
@@ -24,7 +23,7 @@ block content
        div(class='fishAttr mr-3') Fish weight is:
        div #{fish_weight}
       div.row
-       div(class='fishAttr mr-3') Fish cost:
+       div(class='fishAttr mr-3') Fish cost is:
        div #{fish_cost}
  
     button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 

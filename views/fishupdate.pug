@@ -4,15 +4,14 @@ block content
   if (toShow == null) 
     h2 No instance to update 
   else
-  
   - let fishid = toShow._id
   - let fish_type = toShow.fish_type
   - let fish_weight = toShow.fish_weight
-  - let fish_cost = toShow.fish_cost
+  - let fish_cost= toShow.fish_cost
   - let actionid = "/resource/fishes/" + fishid
   div.row(class='mb-2') 
     div.mr-1 ID is 
-    div #{fishid} 
+    div #{biryaniid} 
   form(id='fishForm', action=actionid, method="PUT")
    div.form-group
     label.fishAttr(for='fish_type') Fish type
@@ -22,7 +21,7 @@ block content
     input#fish_weight(type='text', name='fish_weight')
    div.form-group
     label.fishAttr(for='fish_cost') Fish cost
-    input#fish_cost(type='text', name='fish_cost')
+    input#fish_cost(type='number', name='fish_cost')
    input(type="submit")
   script.
     document.forms['fishForm'].addEventListener('submit', (event) => {
