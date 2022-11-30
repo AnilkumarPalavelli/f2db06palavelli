@@ -16,9 +16,9 @@ router.get('/', fish_controlers.fish_view_all_Page);
 /* GET detail fish page */
 router.get('/detail', fish_controlers.fish_view_one_Page);
 /* GET create fish page */
-router.get('/create', fish_controlers.fish_create_Page);
+router.get('/create',secured, fish_controlers.fish_create_Page);
 /* GET create update page */
 router.get('/update',secured, fish_controlers.fish_update_Page);
 /* GET delete fish page */
-router.get('/delete', fish_controlers.fish_delete_Page);
+router.get('/delete',secured, fish_controlers.fish_delete_Page);
 module.exports = router;

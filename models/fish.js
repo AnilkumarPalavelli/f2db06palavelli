@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const fishSchema = mongoose.Schema({
-fish_type: {type:String, minLength:10},
+fish_type: {type:String, maxLength:10},
 fish_weight: String,
-fish_cost: Number
+fish_cost: Number {type:Number, max:50}
 })
 module.exports = mongoose.model("fish",fishSchema)

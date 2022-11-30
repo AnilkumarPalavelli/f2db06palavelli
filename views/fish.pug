@@ -3,15 +3,21 @@ extends layout
 block content
   h1= title
   - let fish=results
+  - let create=`dispatch(\"/fish/create\")`
+  button.btn( class="btn-primary", onclick= create) Create Fish
   div(class="container-fluid")
   div(class="row m-1")
    each f,index  in fish
     - let destination = `dispatch(\"/fish/update?id=${f._id}\")`
+    - let des1 = `dispatch(\"/fish/detail?id=${f._id}\")`
+    - let f1 = `dispatch(\"/fish/delete?id=${f._id}\")`
     div(class="col-sm-2" class="m-1") #{f.fish_type}, #{f.fish_weight}, #{f.fish_cost}
       button.btn( class="btn-primary ml-1", onclick= destination) Update
-   script.
-    function dispatch(path){
-     window.location.href=path
-    }
+      button.btn( class="btn-primary ml-1", onclick= des1) View
+      button.btn( class="btn-primary ml-1", onclick= f1) Delete
+  script.
+   function dispatch(path){
+    window.location.href=path
+   }
 
   
